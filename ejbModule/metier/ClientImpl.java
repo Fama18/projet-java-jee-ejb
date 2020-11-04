@@ -6,17 +6,18 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import metier.entities.Client;
 
 @Stateless
 public class ClientImpl implements IClient{
 
-	
+	@PersistenceContext(unitName="testEjbPu")
 	private EntityManager em;
 	
 	public ClientImpl() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("senforage");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("testEjbPu");
 		em = emf.createEntityManager();
 		
 	}

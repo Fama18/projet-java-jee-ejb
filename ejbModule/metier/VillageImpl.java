@@ -6,16 +6,18 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import metier.entities.Village;
 
 @Stateless
 public class VillageImpl implements IVillage {
 	
+	@PersistenceContext(unitName="testEjbPu")
 	private EntityManager em;
 	
 	public VillageImpl() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("senforage");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("testEjbPu");
 		em = emf.createEntityManager();	
 	}
 

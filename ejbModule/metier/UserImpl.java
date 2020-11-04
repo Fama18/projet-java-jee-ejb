@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import metier.entities.User;
@@ -13,11 +14,11 @@ import metier.entities.User;
 @Stateless
 public class UserImpl implements IUser{
 	
-	
+	@PersistenceContext(unitName="testEjbPu")
 	private EntityManager em;
 	
 	public UserImpl() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("senforage");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("testEjbPu");
 		em = emf.createEntityManager();
 	}
 		
